@@ -4,7 +4,10 @@ mongoose.connect('mongodb://localhost:27017/a', {
     useNewUrlParser: true
 });
 
- 
+const chat = mongoose.model('chat', {
+    talk: String,
+    user:String
+}) 
 
 
 
@@ -17,6 +20,7 @@ const User = mongoose.model('User',
     password: String,
    
     });
+
 const dishes = mongoose.model('dishes', {
 Name:String,
 url:String,
@@ -35,10 +39,25 @@ Method: [
 ]
 // Method:String
 })
+// const favs = mongoose.model('favs',
+// {
+   
+//    FF:String,
+//     recipie1: [
+      
+//     ],
+   
+   
+   
+//     });
+
 
 
 module.exports = {
     User,
-    dishes
+    dishes,
+    chat
+  
+    
     
 }

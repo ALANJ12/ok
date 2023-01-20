@@ -67,12 +67,41 @@ app.get('/all-dishes', (req, res) => {
         res.status(result.statusCode).json(result)
     })
 })
-// app.post('/my', (req, res) => {
-//     console.log(req.body);
-//     dataService.my(req.body.Name, req.body.Author, req.body.Description)
-//         .then(result => {
-//             res.status(result.statusCode).json(result);
-//         })
+app.post('/my', (req, res) => {
+    console.log(req.body);
+    dataService.my(req.body.Name, req.body.Description, req.body.Author, req.body.Ingredients, req.body.Method)
+        .then(result => {
+            res.status(result.statusCode).json(result);
+        })
 
-//     // res.send('signin sucessfull')
+    // res.send('signin sucessfull')
+})
+app.post('/ok', (req, res) => {
+    console.log(req.body);
+    dataService.ok(req.body.talk,req.body.a)
+        .then(result => {
+            res.status(result.statusCode).json(result);
+        })
+
+    // res.send('signin sucessfull')
+})
+
+app.get('/cc', (req, res) => {
+    dataService.gettalk()
+        .then(result =>{
+        res.status(result.statusCode).json(result)
+    })
+})
+// app.post('/save', (req, res) => {
+//     console.log(req.body);
+//     dataService.save(req.body.FF,req.body.GG,req.body.a)
+//     .then(result => {
+//         res.status(result.statusCode).json(result)
+//     })
+// })
+// app.get('/all', (req, res) => {
+//     dataService.getm()
+//         .then(result => {
+//             res.status(result.statusCode).json(result)
+//         })
 // })
