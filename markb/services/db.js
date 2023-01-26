@@ -20,8 +20,17 @@ const User = mongoose.model('User',
     password: String,
    
     });
+const request = mongoose.model('request', {
+    dishname: String,
+    suggestion: String,
+    user:String
+})
+
+
+        
 
 const dishes = mongoose.model('dishes', {
+    
 Name:String,
 url:String,
 Description:String,
@@ -39,24 +48,25 @@ Method: [
 ]
 // Method:String
 })
-// const favs = mongoose.model('favs',
-// {
-   
-//    FF:String,
-//     recipie1: [
-      
-//     ],
-   
+const favs = mongoose.model('favs',
+    {
+        FF: String,
+        recipie1:[]
+    
+    
    
    
-//     });
+   
+    });
 
 
 
 module.exports = {
     User,
     dishes,
-    chat
+    chat,
+    request,
+    favs
   
     
     

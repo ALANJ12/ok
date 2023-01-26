@@ -189,6 +189,47 @@ const gettalk = () => {
  )
 }
 
+const req = (dishname,suggestion,b) => {
+    return db.request.findOne({ suggestion })
+        .then(user => {
+            if (user) {
+                {
+                    const newdishes1 = new db.request({
+                        dishname: dishname,
+                        suggestion: suggestion,
+                        user:b
+                    })
+                    newdishes1.save();
+                    return {
+                        status: true,
+                        statusCode: 200,
+                        message: "request submitted "
+                    }
+                }
+            }
+            else {
+
+                const newdishes1 = new db.request({
+                    dishname: dishname,
+                    suggestion: suggestion,
+                    user:b
+                })
+                
+                
+
+                newdishes1.save();
+                return {
+                    status: true,
+                    statusCode: 200,
+                    message: " request submitted"
+                }
+            
+            }
+        }
+           
+        )
+}
+
 // const save = (FF,GG) => {
 //     return db.favs.findOne({ FF ,GG})
 //         .then(user => {
@@ -222,45 +263,44 @@ const gettalk = () => {
            
 //         )
 // }
-// const save = (FF, GG, a) => {
+const save = (FF, GG, a) => {
    
-//     return db.favs.findOne({ FF })
-//         .then(user => {
-//             if (user ) {
-//                 user.recipie1.push({
-//                     a
-               
+    return db.favs.findOne({ FF })
+        .then(user => {
+            if (user ) {
+                user.recipie1.push({
+                 a
                  
-//                 })
-//                 user.save()
+                })
+                user.save()
                 
                 
-//                 return {
-//                     status: true,
-//                     statusCode: 200,
-//                     message: "updated"
-//                 }
+                return {
+                    status: true,
+                    statusCode: 200,
+                    message: "saved sucessfully"
+                }
                
           
-//             }
+            }
           
-//             else {
-//              new  db.favs({
-//                     FF: FF,
-//                     recipie1: a
+            else {
+           const hi=  new  db.favs({
+                    FF: FF,
+                    a: a
                 
-//                 })
-//                user.save
+                })
+              hi.save()
               
-//                 return {
-//                     status: 'true',
-//                     statusCode: 200,
-//                     message: "OK"
-//                 }
-//             }
-//         }
-//         )
-// }
+                return {
+                    status: 'true',
+                    statusCode: 200,
+                    message: "saved sucessfully"
+                }
+            }
+        }
+        )
+}
 // const getm = () => {
 //     return db.favs.find().then(
 //         (result) => {
@@ -287,27 +327,7 @@ const gettalk = () => {
 // }
   
 // }
-// const gettransaction = (FF) => {
-   
-//     return db.User.findOne({ FF })
-//       .then(user => {
-//         if(user){
-//         return {
-//           status: 'true',
-//           statusCode: 200,
-//           transaction: user.transaction
-//         }
-//         // return this.userdetails[acno]['transaction']
-//         }
-//         else {
-//           return {
-//             status: "false",
-//             statusCode: 400,
-//             message:"user not found"
-//           }
-//       }})
-//     user.save();
-//   }
+
         
         
     
@@ -325,7 +345,9 @@ module.exports = {
     getdishes,
     my,
     ok,
-    gettalk
+    gettalk,
+    req,
+    save
    
  
    

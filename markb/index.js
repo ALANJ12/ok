@@ -73,9 +73,17 @@ app.post('/my', (req, res) => {
         .then(result => {
             res.status(result.statusCode).json(result);
         })
-
-    // res.send('signin sucessfull')
 })
+app.post('/req', (req, res) => {
+    console.log(req.body);
+    dataService.req(req.body.dishname, req.body.suggestion, req.body.b)
+        .then(result => {
+            res.status(result.statusCode).json(result);
+        })
+})
+    
+
+    // res.send('signin sucessfull')})
 app.post('/ok', (req, res) => {
     console.log(req.body);
     dataService.ok(req.body.talk,req.body.a)
@@ -92,12 +100,18 @@ app.get('/cc', (req, res) => {
         res.status(result.statusCode).json(result)
     })
 })
+app.post('/save', (req, res) => {
+    console.log(req.body);
+    dataService.save(req.body.FF,req.body.GG,req.body.a)
+    .then(result => {
+        res.status(result.statusCode).json(result)
+    })
+})
 // app.post('/save', (req, res) => {
-//     console.log(req.body);
-//     dataService.save(req.body.FF,req.body.GG,req.body.a)
-//     .then(result => {
-//         res.status(result.statusCode).json(result)
-//     })
+//     dataService.save(req.body.Name, req.body.Author, req.body.Description,req.body.FF,)
+//         .then((result) => {
+//             res.status(result.statusCode).json(result)
+//         })
 // })
 // app.get('/all', (req, res) => {
 //     dataService.getm()
